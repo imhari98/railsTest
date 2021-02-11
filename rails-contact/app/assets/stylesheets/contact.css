@@ -333,3 +333,36 @@ body {font-family: Arial, Helvetica, sans-serif;}
   text-decoration: none;
   cursor: pointer;
 }
+
+.zmdi {
+    display: inline-block;
+    font: normal normal normal 14px/1 'Material-Design-Iconic-Font';
+        font-size: 14px;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+ .sus-msg {
+    margin: 0px auto;
+    text-align: center;
+    font-weight: 500;
+    background: #d8eacc;
+    padding-top: 4px;
+    padding-bottom: 5px;
+    padding-left: 0px;
+    width: 100%;
+    border-radius: 9px;
+}
+
+.chkem-txt{
+	margin: 0px auto;
+    text-align: center;
+    font-weight: 500;
+    background: #fbc9bd;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    width: 90%;
+    border-radius: 5px;
+}

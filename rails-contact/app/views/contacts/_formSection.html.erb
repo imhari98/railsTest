@@ -1,13 +1,26 @@
+<style>
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+</style>
+
 <h3> Contact Detail</h3>
-       <p id="notice"></p>
-<% if defined?(@contact.id) && @contact.id != ''
-urlLink = "/contacts/#{@contact.id}"
-method_value = "put"
-else
-urlLink = "/contacts"
-method_value = "post"
-end
-%>
+
+<% unless @contact.id.nil? %>
+<% urlLink = "/contacts/#{@contact.id}" %>
+<% method_value = "put" %>
+<%else%>
+<%urlLink = "/contacts"%>
+<%method_value = "post"%>
+<%end%>
   <%= form_tag urlLink, {id:"formSection", method: method_value } do %>
     <label for="fname">First Name:</label>
     <input type="text" id="firstName" name="contact[firstName]" value="<%= @contact.firstName%>"><br><br>
@@ -22,7 +35,7 @@ end
     <input type="hidden" id="id" name="contact[user_id]" value="2">
     
     <div style="text-align:right;">
-    <%unless defined?(@contact.id) && @contact.id != '' %>
+    <% if @contact.id.nil? %>
         <button type="submit" class="imageButtonTag">
           <%= image_tag('plus-solid.svg', class: "imageButton") %>
             Add Contact
