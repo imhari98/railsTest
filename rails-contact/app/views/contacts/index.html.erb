@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <%= stylesheet_link_tag 'common', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= stylesheet_link_tag 'contact', media: 'all', 'data-turbolinks-track': 'reload' %>
 </head>
 <body>
 
@@ -25,6 +26,11 @@ function myFunction() {
     x.className = "topnav";
   }
 }
+
+
+
+
+
 </script>
 
 
@@ -51,16 +57,37 @@ function myFunction() {
       <!--     contact list   	 -->
       <div class="col-xs-5 panel-body">
         <ul class="list-group">
-          <li class="list-group-item"> <h4>Contacts:</h4> <button class = "addContact"><%= image_tag('plus-solid.svg')%></button>
-            <input class="form-control ng-pristine ng-valid" placeholder="Seach Your Contacts" type="text" ng-model="searchText">
+          <li class="list-group-item"> <span style="font-size: 20px;"> Contacts:</span> <button class="imageButtonTag" style="float:right;">
+         <a href="/contacts/new"> <%= image_tag('plus-solid.svg', class: "imageButton") %> 
+            Add Contact
+          </button></a>
+            <div class="clear25"></div>
             
             <% if @contacts.empty?%>
-              <%= image_tag('plus-solid.svg')%>
+              <button class="imageButtonTag">
+          <%= image_tag('plus-solid.svg', class: "imageButton") %>
+            Add
+          </button>
             <% else %>
+            
             <% @contacts.each do |contact| %>
-              <a href="/contacts/<%= contact.id%>" class="list-group-item ng-binding" >
-                  <%= contact.firstName%> <%= contact.lastName%> 
-              </a>
+<div style="border-bottom: 1px black solid;
+border: 1px black solid;
+padding: 10px;
+margin-bottom: 5px;">
+                  <%= contact.firstName%> <%= contact.lastName%>  
+   
+               
+    <a href="/contacts/<%= contact.id%>" data-method="delete" style="float: right;">
+              <%= image_tag('trash-alt-solid.svg', class: "imageButton") %> 
+</a>
+<a style="float: right;" href="/contacts/<%= contact.id%>">
+           <%= image_tag('pen-solid.svg', class: "imageButton") %>
+</a>
+</div>
+<div class="clear5"></div>
+            
+             
             <% end%>
 
             <% end %>
@@ -70,28 +97,19 @@ function myFunction() {
       </div>
       
 
-      <div class="col-xs-7">
-        <div class="list-group panel-body">
-<div ng-view="" class="ng-scope">
-      <div class="list-group-item text-center ng-scope">Please select a contact to view</div>
-      <div id = "fillData" class="list-group-item ng-scope">
-        <h3 class="text-center ng-binding">Arya Stark</h3>
-        <p>email: <a ng-href="waterdancer@winterfell.com" class="ng-binding" href="waterdancer@winterfell.com">waterdancer@winterfell.com</a></p>
-        <p class="ng-binding">phone: 123-456-7890</p>
-        <p>url: <a ng-href="www.google.com" class="ng-binding" href="www.google.com">www.google.com</a></p>
-        <p>Notes:</p>
-        <p class="well well-lg ng-binding">Has a list of names.</p>
+      <div class="col-xs-7" style="margin: 10px;">
+      <% if @contact.nil?%>
+        <span>please Select any option</span>
+      <% else%>
+          <%= render "contacts/formSection" %>
+      <%end%>
+
+
+  
+
 
         
-          <button class="">
-          <%= image_tag('pen-solid.svg') %>
-            Edit
-          </button>
         
-
-        <button class="" >
-          <%= image_tag('trash-alt-solid.svg') %>Remove
-        </button>
       </div>
     </div>
         </div>

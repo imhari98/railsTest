@@ -5,6 +5,13 @@
       <title>Sign Up</title>
       
       <%= stylesheet_link_tag 'signup', media: 'all', 'data-turbolinks-track': 'reload' %>
+      
+    <%= javascript_include_tag "vendor/jquery.min.js" %>
+    <%= javascript_include_tag "vendor/popper.js" %>
+    <%= javascript_include_tag "vendor/bootstrap.min.js" %>
+    <%= javascript_include_tag "vendor/perfect-scrollbar.js" %>
+    <%= javascript_include_tag "vendor/sticky.min.js" %>
+    <%= javascript_include_tag "vendor/scripts-bundle.js" %>
 <% end %>
 
 <div class="main">
@@ -39,19 +46,8 @@
 				  <div class="signup-user-details-section">
 				  
                      <h2 class="form-title">Give your information Please</h2>
-                     <div class="clear15"></div>
-					 <% if alert.present? %>
-                     <% if alert.include?"Username already taken" %>
-						   <div class="chkem-txt chk-txt-alg ck-wds"><i class="fa fa-ban bicon" aria-hidden="true"></i>
-                           <%= t('username') %>
-                           </div>
-                       <% end %>
-                       <% if alert.include?"Name cannot be blank" %>
-						   <div class="chkem-txt chk-txt-alg ck-wds"><i class="fa fa-ban bicon" aria-hidden="true"></i>
-                           <%= t('name') %>
-                           </div>
-                       <% end %>
-                       <% end %>				                     
+                
+					 		                     
 					   <div class="clear15"></div>
 							   <div class="form-group vl-gp ffl-wrapper">
                              <label for="name" class="ffl-label ffl-lt">Email Address</label>
@@ -74,7 +70,7 @@
                               <label for="password" class="ffl-label">Password</label>
                               <i class="zmdi zmdi-lock lk-ics"></i>
                            <input type="password" data-rule-passwordcheck="true"   autocomplete='new-password' name="user[password]" id="password" class="form-control input-lg" required placeholder="" autofocus>
-                           <span data-toggle="#password" class="zmdi zmdi-eye-off  secure-field-icon toggle-password"></span> 
+                           <span data-toggle="#password" class="zmdi zmdi-eye-off  secure-field-icon toggle-password" style="top: 14px;"></span> 
                            <div class="pwd-bgtxt"><i class="zmdi zmdi-check-circle" aria-hidden="true"></i>
                               <span class="sc-pwd">Your password is secure and you're all set!</span> 
                            </div>

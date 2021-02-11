@@ -20,4 +20,5 @@ Rails.application.config.assets.precompile += %w(   sign_in.js
                                                     sign-up-user-details.js
                                                     common.css
                                                     contact.css
-                                                    font.css )
+                                                    font.css
+                                                    contacts.js )

@@ -1,22 +1,119 @@
-<h1>New Contact</h1>
 
-<%#= render 'form', contact: @contact %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<%= stylesheet_link_tag 'common', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= stylesheet_link_tag 'contact', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
 
-<%#= form_for( url: contacts_path) do |f| %>
-<%= form_tag "/contacts", { method: 'post' } do %>
-    <label for="fname">First name:</label>
-    <input type="text" id="firstName" name="contact[firstName]"><br><br>
-    <label for="lname">Last name:</label>
-    <input type="text" id="lastName" name="contact[lastName]"><br><br>
-    <label for="phoneNumber">phoneNumber:</label>
-    <input type="number" id="phoneNumber" name="contact[phoneNumber]" ><br><br>
-    <label for="email">email:</label>
-    <input type="email" id="email" name="contact[email]"><br><br>
-    <label for="address">address:</label>
-    <input type="text" id="address" name="contact[address]"><br><br>
-    <input type="hidden" id= "id" name = "contact[user_id]" value= <%= current_user.id%>>
-    <input type="submit" value="Submit">
+<div class="topnav" id="myTopnav">
+  <a href="/" class="active">Contacts</a>
+  <%= link_to('Signout', destroy_user_session_path, method: :delete, class: "topcorner" )%>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+
+
+
+
+
+</script>
+
+
+<% if notice.present? && notice != "Signed in successfully." && notice != "Welcome! You have signed up successfully."%>
+<p id="notice"><%= notice %></p>
 <% end %>
 
 
-<%= link_to 'Back', contacts_path %>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+</head>
+<body>
+
+<div class="row panel panel-primary ng-scope" >
+
+      <!--     contact list   	 -->
+      <div class="col-xs-5 panel-body">
+        <ul class="list-group">
+          <li class="list-group-item"> <span style="font-size: 20px;"> Contacts:</span> <button class="imageButtonTag" style="float:right;">
+          <%= image_tag('plus-solid.svg', class: "imageButton") %>
+            Add Contact
+          </button>
+            <div class="clear25"></div>
+            
+            <% if @contacts.empty?%>
+              <button class="imageButtonTag">
+          <%= image_tag('plus-solid.svg', class: "imageButton") %>
+            Add
+          </button>
+            <% else %>
+            <% @contacts.each do |contact_object| %>
+            <% puts "Contacts --- #{contact_object.id}"%>
+<div style="border-bottom: 1px black solid;
+border: 1px black solid;
+padding: 10px;
+margin-bottom: 5px;">
+                  <%= contact_object.firstName%> <%= contact_object.lastName%>  
+   
+               
+    <a href="/contacts/<%= contact_object.id%>" data-method="delete" style="float: right;">
+              <%= image_tag('trash-alt-solid.svg', class: "imageButton") %> 
+</a>
+<a style="float: right;" href="/contacts/<%= contact_object.id%>">
+           <%= image_tag('pen-solid.svg', class: "imageButton") %>
+</a>
+</div>
+<div class="clear5"></div>
+            
+             
+            <% end%>
+
+            <% end %>
+           
+          </li>
+        </ul> 
+      </div>
+      
+
+      <div class="col-xs-7" style="margin: 10px;">
+      <% if @contact.nil?%>
+        <span>please Select any option</span>
+      <% else%>
+          <%= render "contacts/formSection" %>
+      <%end%>
+
+      </div>
+    </div>
+        </div>
+      </div>
+        
+    </div>
+
+</body>
+</html>
+
+
+</body>
+</html>

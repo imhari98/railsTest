@@ -4,6 +4,7 @@
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <title>SignIn to Contacts Book</title>
    <%= stylesheet_link_tag 'signup', media: 'all', 'data-turbolinks-track': 'reload' %>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <% end %>
 <div class="main">
                <!-- Sign up form -->
@@ -11,7 +12,6 @@
                   <div class="sigup-section">
                      <div class="signup-content">
                         <div class="signup-container signup-pdg">
-                           
                            <h1 class="signup-title">SignIn to Contacts Book</h1>
                            <div class="clear25"></div>
                               <% if notice.present? %>
@@ -26,7 +26,7 @@
                               <div class="form-group has-feedback ffl-wrapper">
                                     <label for="email" class="ffl-label">Email ID</label> 
                                    <i class="zmdi zmdi-email lk-ics"></i>
-                                  <input type="email"  name="user[email]" id="email" class="form-control"  required placeholder="" autofocus /> 
+                                  <input type="email"  name="user[email]" id="email" class="form-control"  required autofocus /> 
                                   <span class="searchclear zmdi zmdi-close-circle"></span>
 
                                </div>

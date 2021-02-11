@@ -1,0 +1,39 @@
+<h3> Contact Detail</h3>
+       <p id="notice"></p>
+<% if defined?(@contact.id) && @contact.id != ''
+urlLink = "/contacts/#{@contact.id}"
+method_value = "put"
+else
+urlLink = "/contacts"
+method_value = "post"
+end
+%>
+  <%= form_tag urlLink, {id:"formSection", method: method_value } do %>
+    <label for="fname">First Name:</label>
+    <input type="text" id="firstName" name="contact[firstName]" value="<%= @contact.firstName%>"><br><br>
+    <label for="lname">Last Name:</label>
+    <input type="text" id="lastName" name="contact[lastName]" value="<%= @contact.lastName%>"><br><br>
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="number" id="phoneNumber" name="contact[phoneNumber]" value="<%= @contact.phoneNumber%>"><br><br>
+    <label for="email">Email Id:</label>
+    <input type="email" id="email" name="contact[email]" value="<%= @contact.email%>"><br><br>
+    <label for="address">Address:</label>
+    <input type="text" id="address" name="contact[address]" value="<%= @contact.address%>"><br><br>
+    <input type="hidden" id="id" name="contact[user_id]" value="2">
+    
+    <div style="text-align:right;">
+    <%unless defined?(@contact.id) && @contact.id != '' %>
+        <button type="submit" class="imageButtonTag">
+          <%= image_tag('plus-solid.svg', class: "imageButton") %>
+            Add Contact
+          </button>
+    <%else%>
+        <button type="submit" class="imageButtonTag">
+          <%= image_tag('pen-solid.svg', class: "imageButton") %>
+            Update Contact
+          </button>
+    <%end%>
+            
+        
+        </div>
+<% end%>

@@ -11,11 +11,13 @@ class ContactsController < ApplicationController
   # GET /contacts/1 or /contacts/1.json
   def show
     # render json: @contact
+    all_contacts
   end
 
   # GET /contacts/new
   def new
     @contact = Contact.new
+    all_contacts
   end
 
   # GET /contacts/1/edit
@@ -66,6 +68,10 @@ class ContactsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_contact
       @contact = Contact.find(params[:id])
+    end
+
+    def all_contacts
+      @contacts = Contact.all.where(:user_id => current_user.id).sort_by {|sort| sort.firstName}
     end
 
     # Only allow a list of trusted parameters through.
