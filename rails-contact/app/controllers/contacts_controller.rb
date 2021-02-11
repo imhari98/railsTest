@@ -1,4 +1,5 @@
 class ContactsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_contact, only: %i[ show edit update destroy ]
 
   # GET /contacts or /contacts.json
@@ -26,7 +27,6 @@ class ContactsController < ApplicationController
     # contact_static = {"user_id" =>current_user.id, "firstName"=>"cfgvhbjnkm", "lastName"=>"gvhbjnkm", "phoneNumber"=>"2345675677", "email"=>"hariven1998@gmail.com", "address"=>"tnj"}
     # params[:contact][:user_id] = current_user.id
     @contact = Contact.new(contact_params)
-    puts "@contact -- #{@contact.inspect}"
     respond_to do |format|
       if @contact.save
         format.html { redirect_to @contact, notice: "Contact was successfully created." }

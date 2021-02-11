@@ -17,4 +17,7 @@ Rails.application.config.assets.precompile += %w(   sign_in.js
                                                     signup.css
                                                     passwordRulesHelper.min.js
                                                     sign-up-password.js
-                                                    sign-up-user-details.js )
+                                                    sign-up-user-details.js
+                                                    common.css
+                                                    contact.css
+                                                    font.css )

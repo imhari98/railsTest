@@ -6,6 +6,5 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     :registrations => 'users/registrations'
   }
-  root :to => 'welcome#index'
-  get 'test', :to=> 'welcome#test'
+  root :to => 'contacts#index'
 end
