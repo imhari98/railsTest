@@ -1,0 +1,22 @@
+<h1>New Contact</h1>
+
+<%#= render 'form', contact: @contact %>
+
+<%#= form_for( url: contacts_path) do |f| %>
+<%= form_tag "/contacts", { method: 'post' } do %>
+    <label for="fname">First name:</label>
+    <input type="text" id="firstName" name="contact[firstName]"><br><br>
+    <label for="lname">Last name:</label>
+    <input type="text" id="lastName" name="contact[lastName]"><br><br>
+    <label for="phoneNumber">phoneNumber:</label>
+    <input type="number" id="phoneNumber" name="contact[phoneNumber]" ><br><br>
+    <label for="email">email:</label>
+    <input type="email" id="email" name="contact[email]"><br><br>
+    <label for="address">address:</label>
+    <input type="text" id="address" name="contact[address]"><br><br>
+    <input type="hidden" id= "id" name = "contact[user_id]" value= <%= current_user.id%>>
+    <input type="submit" value="Submit">
+<% end %>
+
+
+<%= link_to 'Back', contacts_path %>
