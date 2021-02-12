@@ -39,6 +39,7 @@ function myFunction() {
 
       <!--     contact list   	 -->
       <div class="col-xs-5 panel-body">
+      <span style="padding-left: 10px;"> Hi <%= current_user.fullName%></span>
         <ul class="list-group">
           <li class="list-group-item"> <span style="font-size: 20px;"> Contacts:</span> <button class="imageButtonTag" style="float:right;">
          <a href="/contacts/new"> <%= image_tag('plus-solid.svg', class: "imageButton") %> 
