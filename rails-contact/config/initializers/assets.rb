@@ -13,6 +13,7 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 Rails.application.config.assets.precompile += %w(   sign_in.js
                                                     vendor/*
+                                                    fonts/*
                                                     floatingFormLabels.min.js
                                                     signup.css
                                                     passwordRulesHelper.min.js
@@ -22,4 +23,4 @@ Rails.application.config.assets.precompile += %w(   sign_in.js
                                                     contact.css
                                                     font.css
                                                     contacts.js
-                                                fonts/* )
+                                                    reset_password.js )

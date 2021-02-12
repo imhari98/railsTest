@@ -1,16 +1,63 @@
-<h2>Forgot your password?</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
+<% content_for :head do %>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Rails Contact</title>
+   
+   <%= stylesheet_link_tag 'signup', media: 'all', 'data-turbolinks-track': 'reload' %>
 <% end %>
+            <div class="main">
+               <!-- Sign up form -->
+               <section class="signup">
+                  <div class="sigup-section">
+                     <div class="signup-content">
+                        <div class="signup-container">
+                           
+                           <h1 class="signup-title">Forgot Password</h1>
+                        
+                                <div class="emimg-section keypwd">
+                                  
+                                 </div>
+                               <div class="clear10"></div>
+                               <% if @message.present? %>
+                                 <div class="chkem-txt"><i class="fa fa-ban bicon" aria-hidden="true"></i>
+                               <%= t('email_not_found') %></div>
+                               <% end %>
+                               <div class="sft-txt"> Enter your email address and we’ll send you 
+                                     a link to reset your password.     </div>
+                                     <div class="clear15"></div>
+                           <%= form_tag '/users/password', {class: 'register-form', id: 'signin-form'} do -%>
+                                
+                              <div class="form-group has-feedback ffl-wrapper">
+                                    <label for="email" class="ffl-label">Email</label> 
+                                   <i class="zmdi zmdi-email lk-ics"></i>
+                                  <input type="email"  name="user[email]" id="email" class="form-control"  required placeholder="" autofocus /> 
+                                  <span class="searchclear zmdi zmdi-close-circle"></span>
 
-<%= render "devise/shared/links" %>
+                               </div>
+                               
+
+                             
+                             <div class="clear"></div>
+                              <div class="form-group form-button"> 
+                                 <input type="submit" name="signin" id="signin" class="sign-up-btn" value="Send password reset link"/> 
+                              </div>
+                           <% end -%>
+                           <div class="clear"></div>
+                         
+                           <div class="clear15"></div>
+                          
+                          </div>
+                     </div>
+                  </div>
+                  <div class="clear15"></div>
+                   
+                  <p class="text-center ac-txt"><a href="/users/sign_in" style="background-color: rgba(255, 255, 255, 0);"><b>Back to sign in</b></a></p>
+               </section>
+            </div>
+      <!-- JS -->      
+      <%= javascript_include_tag "vendor/jquery.min.js" %>
+      <%= javascript_include_tag "vendor/jquery.validate.min.js" %>
+      <%= javascript_include_tag "floatingFormLabels.min.js" %>
+      <%= javascript_include_tag "reset_password.js" %>
+      

@@ -13,8 +13,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
     puts "current_user  before-- #{current_user.inspect}\n\n"
-    current_user.fullName = params[:user][:fullName]
-    current_user.save
+    unless current_user.nil?
+      current_user.fullName = params[:user][:fullName]
+      current_user.save  
+    else
+      flash.now[:alert] = "Email Id already Exists"
+    end
     puts "current_user  after-- #{current_user.inspect}\n\n"
   end
 

@@ -3,9 +3,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>Sign Up</title>
-      
       <%= stylesheet_link_tag 'signup', media: 'all', 'data-turbolinks-track': 'reload' %>
-      
     <%= javascript_include_tag "vendor/jquery.min.js" %>
     <%= javascript_include_tag "vendor/popper.js" %>
     <%= javascript_include_tag "vendor/bootstrap.min.js" %>
@@ -23,26 +21,10 @@
                   <div class="signup-image">
                      <div class="clear25"></div>
                      <a class="signup-head">Sign up</a>
-                     <div class="signup-userdetails-txt-section">
-                        <ul>
-                          
-                           
-                            <li class="lt-active"><span class="rounded-box-wt">1</span>About you</li>
-                           <li><span class="rounded-box-gy opty">2</span><span class="opty">Set a password</span> </li>
-                        </ul>
-                     </div>
-					  <div class="signup-password-txt-section">
-                        <ul>
-                           
-                           <li class="lt-active"><i class="zmdi zmdi-check grtik-icon" aria-hidden="true"></i>
-                              <span class="opty" >About you</span>
-                           </li>                          
-                           <li ><span class="rounded-box-wt">2</span><span>Set a password</span></li>
-                        </ul>
-                     </div>
+
                   </div>
                   <div class="signup-form">
-                  <%= form_tag '/users', {class: 'register-form', id: 'signup-abtform'} do -%>
+                  <%= form_tag '/check_userExists', {class: 'register-form', id: 'signup-abtform'} do -%>
 				  <div class="signup-user-details-section">
 				  
                      <h2 class="form-title">Give your information Please</h2>
@@ -52,6 +34,12 @@
 							   <div class="form-group vl-gp ffl-wrapper">
                              <label for="name" class="ffl-label ffl-lt">Email Address</label>
                            <input type="email" name="user[email]" class="form-control pl-15 mtb-10" id="email"  autocomplete="off" placeholder="" autofocus />
+                              
+                              <%if alert.present?%>
+                                 <div class="pwd-bgtxt"><i class="zmdi zmdi-check-circle" aria-hidden="true"></i>
+                                 <span class="sc-pwd"><%= alert%></span> 
+                              </div>
+                           <%end%>
                            
                         </div>
                         <div class="clear10"></div>

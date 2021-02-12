@@ -78,10 +78,10 @@ margin-bottom: 5px;">
       
 
       <div class="col-xs-7" style="margin: 10px;">
-      <% if notice.present?  #&& notice != "Signed in successfully." && notice != "Welcome! You have signed up successfully."%>
+      <% if notice.present? && notice != "Signed in successfully." && notice != "Welcome! You have signed up successfully."%>
         <div class="sus-msg"><i aria-hidden="true" class="zmdi zmdi-check-circle"></i>
         <%= notice %></div>
-      <% elsif alert.present? %>
+      <% elsif alert.present? && alert != "You are already signed in."%>
         <div class="chkem-txt"><i class="fa fa-ban bicon" aria-hidden="true"></i>
         <%= alert %></div>
       <% end %>
